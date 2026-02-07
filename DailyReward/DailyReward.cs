@@ -393,14 +393,14 @@ public class DailyRewardMod : IOnLoad
             if (count > 1)
             {
                 item.AddUpd();
-                item.Upd.StackObjectsCount = count;
+                item.Upd!.StackObjectsCount = count;
             }
 
             // Set found in raid status
             if (foundInRaid)
             {
                 item.AddUpd();
-                item.Upd.SpawnedInSession = true;
+                item.Upd!.SpawnedInSession = true;
             }
 
             return item;
@@ -429,7 +429,7 @@ public class GetProfileDataPatch : AbstractPatch
 
     protected override MethodBase GetTargetMethod()
     {
-        return typeof(ProfileCallbacks).GetMethod(nameof(ProfileCallbacks.GetProfileData));
+        return typeof(ProfileCallbacks).GetMethod(nameof(ProfileCallbacks.GetProfileData))!;
     }
 
     [PatchPostfix]
